@@ -117,7 +117,6 @@ class DataFrameHelper(object):
                         temp_bar_values[MatrixType.MATRIX_COLUMN] = list(temp_values[k].keys())
                         data.update(DataFrameHelper._update_data_dict(data, temp_bar_values, value[0], columns[0]))
                 elif graph_type == StatGraphType.GENERAL_GRAPH:
-                    print("value[1] = ", value[1])
                     temp_values = ast.literal_eval(value[1])
                     data.update(DataFrameHelper._update_data_dict(data, temp_values, value[0], columns[0]))
                 else:
