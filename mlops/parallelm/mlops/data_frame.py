@@ -6,7 +6,7 @@ import binascii
 from collections import OrderedDict
 
 
-from parallelm.mlops.constants import Constants, HistogramType, MatrixType, GeneralType
+from parallelm.mlops.constants import Constants, HistogramType, MatrixType
 from parallelm.mlops.stats_category import StatGraphType
 from parallelm.mlops.mlops_exception import MLOpsException
 from parallelm.mlops.constants import DataframeColNames

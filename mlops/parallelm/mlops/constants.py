@@ -90,13 +90,6 @@ class MatrixType:
     MATRIX_VALUES = "matrix_values"
     MATRIX_ROW_NAME = "matrix_row_name"
 
-class GeneralType:
-    """
-    Constants used for matrix parsing
-    """
-    YSERIES = "y_series"
-    DATA = "data"
-    LABEL = "label"
 
 class PyHealth:
     MAXIMUM_CATEGORY_UNIQUE_VALUE_REQ = 25

@@ -933,7 +933,7 @@ class MLOps(object):
         return TimeCapture(input_file)
 
     def attach(self,
-               ion_id,
+               mlapp_id,
                mlops_server=Constants.MLOPS_DEFAULT_HOST,
                mlops_port=Constants.MLOPS_DEFAULT_PORT,
                user=Constants.MLOPS_DEFAULT_USER,
@@ -941,7 +941,7 @@ class MLOps(object):
         """
         Attach to a running ION and run in its context.
         Side effect: sets up mlops_context
-        :param ion_id: the id of the ION to connect to
+        :param mlapp_id: the id of the ION to connect to
         :param mlops_server: the host to connect to
         :param mlops_port: the port MLOps is using
         :param user: user name to use for connection
@@ -951,7 +951,7 @@ class MLOps(object):
         Note: Attach only works for pure python code
         """
         self._logger.info("Connecting to mlops: {} {}: {} user: {} pass: {}".format(
-            mlops_server, Constants.ION_LITERAL, ion_id, user, password))
+            mlops_server, Constants.ION_LITERAL, mlapp_id, user, password))
 
         if password is None:
             password = getpass.getpass("Enter password:")
@@ -966,7 +966,7 @@ class MLOps(object):
         ci.zk_host = None
         ci.mlops_port = str(mlops_port)  # Constants.MLOPS_DEFAULT_PORT
         ci.mlops_server = mlops_server
-        ci.ion_id = ion_id
+        ci.ion_id = mlapp_id
         ci.mlops_mode = MLOpsMode.ATTACH
         ci.output_channel_type = OutputChannel.PYTHON
 
