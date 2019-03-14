@@ -16,7 +16,6 @@ from datetime import datetime
 
 import pandas as pd
 import six
-import getpass
 
 from parallelm.mlops.config_info import ConfigInfo
 from parallelm.mlops.constants import Constants, DataframeColNames
@@ -952,9 +951,6 @@ class MLOps(object):
         """
         self._logger.info("Connecting to mlops: {} {}: {} user: {} pass: {}".format(
             mlops_server, Constants.ION_LITERAL, mlapp_id, user, password))
-
-        if password is None:
-            password = getpass.getpass("Enter password:")
 
         # Connecting directly the server
         rest_helper = MlOpsRestFactory().get_rest_helper(MLOpsMode.ATTACH, mlops_server, mlops_port, None)
