@@ -1,3 +1,5 @@
+import os
+
 from parallelm.common.base import Base
 from parallelm.pipeline import json_fields, java_mapping
 
@@ -87,6 +89,11 @@ class DagNode(Base):
         comp_args = self._comp_desc[json_fields.COMPONENT_DESC_ARGUMENTS]
         for comp_arg in comp_args:
             arg_key = comp_arg[json_fields.COMPONENT_DESC_ARGUMENT_KEY]
+            # check if argument has an option to get value from env
+            if arg_key not in input_args and json_fields.COMPONENT_DESC_ARGUMENT_ENV_VAR in comp_arg:
+                env_var_value = os.environ.get(comp_arg[json_fields.COMPONENT_DESC_ARGUMENT_ENV_VAR])
+                if env_var_value:
+                    input_args[arg_key] = env_var_value
             if arg_key not in input_args and json_fields.COMPONENT_DESC_ARGUMENT_DEFAULT_VAL in comp_arg:
                 input_args[arg_key] = comp_arg[json_fields.COMPONENT_DESC_ARGUMENT_DEFAULT_VAL]
 
